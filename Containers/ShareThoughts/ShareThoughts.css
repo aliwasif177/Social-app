@@ -1,0 +1,13 @@
+.share {
+  border-radius: 40px;
+}
+.rounding {
+  border-radius: 13px;
+  background-color: #f4f4f4;
+}
+.image-upload > input {
+  display: none;
+}
+.color {
+  background-color: #f4f4f4;
+}

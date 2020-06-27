@@ -1,0 +1,80 @@
+body {
+  background-color: #f4f4f4;
+}
+
+/*****************************  Nav Bar section **************************/
+
+.remove-borders {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.box-shadow:active {
+  box-shadow: none;
+}
+.box-shadow:focus {
+  box-shadow: none;
+
+  color: #000;
+}
+.navbar-nav {
+  flex-direction: row !important;
+}
+/* .fa-search {
+  color: white;
+} */
+nav {
+  border-bottom: #0275d8 1px solid;
+}
+.nav-item {
+  padding-left: 2rem;
+}
+@media (max-width: 539px) {
+  .nav-item {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+}
+@media (max-width: 995px) {
+  .nav-item {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media (max-width: 593px) {
+  .nav-item {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 443px) {
+  .nav-item {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (max-width: 375px) {
+  .nav-item {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+
+@media (max-width: 280px) {
+  .nav-item {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+}
+
+/* bootstrap navbar */
+
+.nav-link {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.active {
+  color: #dc3545 !important;
+}
