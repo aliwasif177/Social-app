@@ -6,10 +6,7 @@ import { connect } from "react-redux";
 import { store } from "../..";
 class Layout extends Component {
   showProfile = () => {
-    console.log(this.props.history);
-    this.props.showProfile(store.getState().auth.userId, this.props.history);
-    console.log(store.getState().auth.userId);
-    // this.props.history.push("/Profile");
+    this.props.showProfile(store.getState().auth.userId, this.props.history);    
   };
 
   render() {
@@ -25,12 +22,6 @@ class Layout extends Component {
     );
   }
 }
-
-// const mapStateToProps=(state)=>{
-//   return{
-
-//   }
-// }
 
 const mapDispatchToProps = (dispatch) => {
   return {

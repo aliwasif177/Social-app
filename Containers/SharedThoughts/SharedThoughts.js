@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-
 import PostDisplay from "../../Containers/Postdisplay/Postdisplay";
 import "./SharedThoughts.css";
+
 class sharedThoughts extends Component {
   render() {
-    console.log(this.props.currentlike);
     return (
       <PostDisplay
         image={this.props.image}
@@ -27,7 +26,6 @@ class sharedThoughts extends Component {
         trackLikes={this.props.trackLikes}
         likes={this.props.likes}
         currentlike={this.props.currentlike}
-        // getProfile={this.props.getProfile}
         getSelectedUserDetail={this.props.getSelectedUserDetail}
         history={this.props.history}
       />

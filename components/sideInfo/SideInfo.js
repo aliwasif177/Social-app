@@ -14,7 +14,6 @@ const sideInfo = () => (
     />
 
     <div className="card-body">
-      {/* <h6 className="font-weight-bold text-dark">Zaeem Awan</h6> */}
       <p>
         <small className="text-muted">
           Any one can join with but Social network us if you want Any one can

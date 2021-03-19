@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import testing from "../../Assets/images/testing.jpeg";
 import { store } from "../../index";
 import * as actionCreators from "../../Store/index";
 import profilePic from "../../Assets/images/profilePic.jpeg";
@@ -9,7 +8,6 @@ import ProfilePhotosCollection from "../../components/ProfilephotosCollection/pr
 import { connect } from "react-redux";
 import { faCamera, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import VideoCollection from "../../components/videoCollection/videoCollection";
 class Profile extends Component {
   state = {
     isChanged: false,
@@ -29,8 +27,6 @@ class Profile extends Component {
       name: name,
       comment: "",
     };
-    console.log(profilePic);
-    console.log(i);
     enterInfo.comment = e.target.value;
     i.currentComment = { ...enterInfo };
 
@@ -58,12 +54,6 @@ class Profile extends Component {
       isChanged: true,
     });
   };
-  setFollower = () => {};
-
-  // componentDidMount() {
-  //   console.log();
-  // }
-
   render() {
     let myPosts = [...this.props.posts];
     let firstName = store.getState().auth.signUpData.firstName;
@@ -172,14 +162,6 @@ class Profile extends Component {
                       <ProfilePhotosCollection posts={this.props.posts} />
                     </div>
                   </div>
-
-                  {/* <div className="my-pics">
-                    <h4> Videos</h4>
-                    <hr className="mt-3" />
-                    <div className="card-columns pt-3 ">
-                      <VideoCollection posts={this.props.posts} />
-                    </div>
-                  </div> */}
                 </div>
                 <div className="col-lg-7">
                   {this.props.posts.map((i) => {
@@ -232,7 +214,6 @@ export const mapStateToProps = (state) => {
     coverPic: state.auth.signUpData.coverPic,
     profilePic: state.auth.signUpData.profilePic,
     profilePicIsLoading: state.auth.profilePicIsLoading,
-    // changing: state.thoughts.changing,
   };
 };
 export const mapDispatchToProps = (dispatch) => {

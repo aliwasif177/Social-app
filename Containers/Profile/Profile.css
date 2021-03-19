@@ -1,5 +1,4 @@
 .inner {
-  /* position: absolute; */
   height: 312px;
   width: 100%;
 }
@@ -11,18 +10,14 @@
   width: 100%;
   border-bottom-right-radius: 9px;
   border-bottom-left-radius: 9px;
-  /* background-image: url(../../Assets//images/testing.jpeg); */
 }
 .card-img-top {
-  /* position: absolute; */
   height: 312px;
   width: 100%;
   border-bottom-right-radius: 9px;
   border-bottom-left-radius: 9px;
-  /* background-image: url(../../Assets//images/testing.jpeg); */
 }
 .profile-pic {
-  /* display: inline; */
   height: 180px;
   width: 180px;
   margin-top: -213px;
@@ -38,14 +33,10 @@ hr {
 .my-pics {
   border: lightgray solid 1px;
   height: 320px;
-  /* border-top: none; */
-  /* padding-top: 3px; */
   margin-top: 16px;
 }
 .profile-button {
   margin-top: -125px;
-  /* margin-bottom: 15px; */
-  /* border-radius: 12px; */
   font-size: 17px;
   color: white;
   float: right;
@@ -53,19 +44,15 @@ hr {
   background-repeat: no-repeat;
   border: 2px solid darkgray;
   border-radius: 9px;
-  /* background-color: darkgray; */
   opacity: 1;
   cursor: pointer;
   width: 170px;
   font-weight: 500;
-  /* overflow: hidden; */
   outline: none;
 }
 .save-button {
   margin-top: -125px;
   margin-right: 200px;
-  /* margin-bottom: 15px; */
-  /* border-radius: 12px; */
   font-size: 17px;
   color: white;
   float: right;
@@ -73,13 +60,11 @@ hr {
   background-repeat: no-repeat;
   border: 2px solid darkgray;
   border-radius: 9px;
-  /* background-color: darkgray; */
   opacity: 1;
   cursor: pointer;
   width: 100px;
   height: 45px;
   font-weight: 500;
-  /* overflow: hidden; */
   outline: none;
 }
 
@@ -113,8 +98,6 @@ hr {
   position: absolute;
   margin-left: 45px;
   margin-top: -65px;
-  /* margin-left: 95px;
-  margin-bottom: -19px; */
   color: white;
   cursor: pointer;
   font-size: small;

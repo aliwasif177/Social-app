@@ -1,10 +1,8 @@
 import React from "react";
-import { store } from "../../index";
 const videoCollection = (props) => {
   let myPosts = [...props.posts];
 
   return myPosts.map((i, index) => {
-    console.log(i);
     if (i.video) {
       return (
         <div key={index}>

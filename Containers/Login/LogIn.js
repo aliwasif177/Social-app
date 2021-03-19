@@ -1,24 +1,13 @@
 import React, { Component } from "react";
 import * as actionCreators from "../../Store/index";
 import { connect } from "react-redux";
-import { Carousel } from "react-bootstrap";
-import bg1 from "../../Assets/images/bg1.jpg";
-import bg2 from "../../Assets/images/bg2.jpg";
-import bg3 from "../../Assets/images/bg3.jpg";
 import logic from "../../Assets/images/logic.png";
-import fire from "../../Firebase/Fire";
 import "./login.css";
-import { NavLink } from "react-router-dom";
 class LogIn extends Component {
   state = {
     email: "",
     password: "",
   };
-
-  componentDidMount() {
-    console.log(this.props.auth);
-    console.log(this.props.history);
-  }
 
   render() {
     return (
@@ -45,15 +34,12 @@ class LogIn extends Component {
                     value={this.props.password}
                     onChange={(e) => this.props.passwordChangedHandler(e)}
                   />
-
-                  {/* <NavLink to="/"> */}
                   <button
                     className="btn btn-clr btn-sm text-light"
                     onClick={(e) => this.props.signingIn(e, this.props.history)}
                   >
                     Login
                   </button>
-                  {/* </NavLink> */}
                 </form>
               </div>
             </div>
@@ -73,11 +59,7 @@ class LogIn extends Component {
                 <div>
                   <h2 className="font-weight-bold text-justify">
                     Create an account
-                    {/* <p className="font-weight-light">its quick and easy</p> */}
-                  </h2>
-                  {/* <p className="font-weight-light text-justify-center ml-auto">
-                    its quick and easy
-                  </p> */}
+                  </h2>                  
                 </div>
                 <div>
                   <p className="font-weight-light  pd-4 text-justify">
@@ -156,9 +138,7 @@ class LogIn extends Component {
                       type="checkbox"
                       name="options"
                       autoComplete="off"
-                      // onClick={(e) => this.props.genderChangedHandler(e)}
                       value="male"
-                      // value={this.props.gender}
                     />{" "}
                     Male
                   </label>
@@ -168,7 +148,6 @@ class LogIn extends Component {
                       name="options"
                       autoComplete="off"
                       value="female"
-                      // onClick={(e) => this.props.genderChangedHandler(e)}
                     />{" "}
                     Female
                   </label>
@@ -177,7 +156,6 @@ class LogIn extends Component {
                       type="checkbox"
                       name="options"
                       autoComplete="off"
-                      // onClick={(e) => this.props.genderChangedHandler(e)}
                       value="other"
                     />{" "}
                     Other

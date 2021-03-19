@@ -80,11 +80,6 @@ const navbar = (props) => {
                 LogOut
               </a>
             </li>
-            {/* <li>Logout</li> */}
-
-            {/* <li> */}
-            {/* <img src={logo} className="ml-3" /> */}
-            {/* </li> */}
           </div>
         </div>
       </nav>

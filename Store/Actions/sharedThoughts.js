@@ -121,8 +121,6 @@ export const submitting = () => {
   let userPost = [];
   return (dispatch) => {
     dispatch(givingUid());
-
-    console.log(store.getState().auth.signUpData.firstName);
     let firstName = store.getState().auth.signUpData.firstName;
     let lastName = store.getState().auth.signUpData.lastName;
     dispatch(givingAuthorName(firstName, lastName));
@@ -141,9 +139,7 @@ export const submitting = () => {
       .push(store.getState().thoughts.post);
     postSubmitRef.once("value").then((snapshot) => {
       myThoughts.key = snapshot.key;
-      console.log(myThoughts);
       userPost.push(myThoughts);
-      console.log(userPost);
       let resetThoughts = { ...store.getState().thoughts.post };
       resetThoughts.text = "";
       resetThoughts.image = "";
@@ -192,20 +188,16 @@ export const trackShares = (i) => {
 };
 export const trackLikes = (i) => {
   let userId = store.getState().auth.userId;
-  console.log(userId);
   let name =
     store.getState().auth.signUpData.firstName +
     " " +
     store.getState().auth.signUpData.lastName;
-  console.log(i);
 
   return (dispatch) => {
     let found = i.likes.find((post) => {
       if (post.userId == userId) return true;
     });
-    console.log(userId);
     if (!found) {
-      console.log(userId);
       i.currentlike.userId = userId;
       i.currentlike.name = name;
       i.likes.push(i.currentlike);
@@ -222,11 +214,6 @@ export const trackLikes = (i) => {
           console.log("likes failed");
         });
     } else {
-      // console.log(userId);
-      // i.currentlike.userId = userId
-      // i.currentlike.name = name;
-      // i.likes.push(i.currentlike);
-
       i.likes = i.likes.filter((post) => {
         return post.userId != userId;
       });

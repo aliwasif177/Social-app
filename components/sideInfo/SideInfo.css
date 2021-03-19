@@ -1,11 +1,5 @@
-/* .bg {
-  background: url(../../Assets//images/nature.jpg);
-} */
 .info {
-  /* border: rgba(0, 0, 0, 0.8) solid 12px; */
-  /* opacity: 0.8; */
   border: 2px solid rgba(0, 0, 0, 1);
-  /* box-sizing: border-box; */
 }
 .text-cent {
   margin-top: -60px;

@@ -32,7 +32,6 @@ const initialState = {
 const Auth = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SIGN_UP_START:
-      console.log("Sign");
       return updateObject(state, {
         loading: true,
         error: false,

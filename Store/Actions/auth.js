@@ -1,8 +1,6 @@
 import fire from "../../Firebase/Fire";
 import * as actionTypes from "./actionTypes";
-import alxios from "../../axios-post/axios-post";
 import { store } from "../../index";
-import { storage } from "firebase";
 import axios from "axios";
 import { loadPost } from "../Actions/sharedThoughts";
 
@@ -11,9 +9,6 @@ export const signUp = (email, password, e) => {
   return (dispatch) => {
     let email = store.getState().auth.signUpData.signUpEmail;
     let password = store.getState().auth.signUpData.signUpPassword;
-    console.log(store.getState());
-    console.log(email);
-    console.log(password);
 
     dispatch(signUpStart());
     let payLoad = {
@@ -29,12 +24,10 @@ export const signUp = (email, password, e) => {
         payLoad
       )
       .then((res) => {
-        console.log(res);
         dispatch(signUpSuccess(res.data.idToken, res.data.localId));
         dispatch(addingUser(res.data.localId));
       })
       .catch((res) => {
-        console.log(res);
         dispatch(signUpFailed());
       });
   };
@@ -43,7 +36,6 @@ export const signUp = (email, password, e) => {
 export const addingUser = (uid) => {
   return (dispatch) => {
     let signUpData = store.getState().auth.signUpData;
-    console.log(signUpData);
 
     fire
       .database()
@@ -60,7 +52,6 @@ export const addingUser = (uid) => {
 
 export const firstNameChangedHandler = (e) => {
   e.persist();
-  console.log(e);
   return {
     type: actionTypes.FIRST_NAME_CHANGED_HANDLER,
     e: e,
@@ -68,7 +59,6 @@ export const firstNameChangedHandler = (e) => {
 };
 export const lastNameChangedHandler = (e) => {
   e.persist();
-  console.log(e.target.value);
   return {
     type: actionTypes.LAST_NAME_CHANGED_HANDLER,
     e: e,
@@ -78,7 +68,6 @@ export const genderChangedHandler = (e) => {
   e.persist();
 
   let storage = store.getState().auth.signUpData;
-  console.log(storage);
   return {
     type: actionTypes.GENDER_CHANGED_HANDLER,
     e: e,
@@ -86,7 +75,6 @@ export const genderChangedHandler = (e) => {
 };
 export const signUpEmailChangedHandler = (e) => {
   e.persist();
-  console.log(e.target.value);
   return {
     type: actionTypes.SIGN_UP_EMAIL_CHANGED_HANDLER,
     e: e,
@@ -94,7 +82,6 @@ export const signUpEmailChangedHandler = (e) => {
 };
 export const signUpPasswordChangedHandler = (e) => {
   e.persist();
-  console.log(e.target.value);
   return {
     type: actionTypes.SIGN_UP_PASSWORD_CHANGED_HANDLER,
     e: e,
@@ -102,7 +89,6 @@ export const signUpPasswordChangedHandler = (e) => {
 };
 export const DOBChangedHandler = (e) => {
   e.persist();
-  console.log(e.target.value);
   return {
     type: actionTypes.DOB_CHANGED_HANDLER,
     e: e,
@@ -138,7 +124,6 @@ export const signUpFailed = () => {
 export const signIn = (e, history) => {
   // e.persist();
   e.preventDefault();
-  console.log(history);
   return (dispatch) => {
     dispatch(signInStart());
     let email = store.getState().auth.email;
@@ -149,7 +134,6 @@ export const signIn = (e, history) => {
       password: password,
       returnSecureToken: true,
     };
-    console.log(payLoad);
     axios
       .post(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
@@ -178,22 +162,14 @@ export const getUserDetail = (history) => {
       .get("https://socialapp-6449c.firebaseio.com/Users.json")
       .then((res) => {
         let userId = store.getState().auth.userId;
-        console.log(userId);
-
-        console.log(userId);
         Object.keys(res.data).map((i) => {
           if (i == userId) {
-            console.log("same");
-
             Object.keys(res.data[i]).map((j) => {
-              console.log(j);
               user = { ...res.data[i][j] };
-              console.log(user);
               return user;
             });
           }
         });
-        console.log(user);
         dispatch(updateUserIO(user));
         history.push("/");
       })
@@ -243,7 +219,6 @@ export const passwordChangedHandler = (e) => {
 };
 
 export const logOut = (history) => {
-  console.log(history);
   history.push("/login");
 
   return {
@@ -254,7 +229,6 @@ export const logOut = (history) => {
 export const changeProfilePic = (e) => {
   let file = e.target.files[0];
   return (dispatch) => {
-    console.log(e.target.files[0]);
     let galleryRef = fire.storage().ref();
     galleryRef
       .child(file.name)
@@ -270,9 +244,7 @@ export const changeProfilePic = (e) => {
                 let userId = store.getState().auth.userId;
                 Object.keys(res.data).map((i) => {
                   if (i == userId) {
-                    console.log("ab kro is main change");
                     Object.keys(res.data[i]).map((j) => {
-                      console.log(j);
                       let updates = {};
                       updates[
                         "/Users/" + userId + "/" + j + "/profilePic"
@@ -302,7 +274,6 @@ export const changeProfilePic = (e) => {
 export const changeCoverPic = (e) => {
   let file = e.target.files[0];
   return (dispatch) => {
-    console.log(e.target.files[0]);
     let galleryRef = fire.storage().ref();
     galleryRef
       .child(file.name)
@@ -318,9 +289,7 @@ export const changeCoverPic = (e) => {
                 let userId = store.getState().auth.userId;
                 Object.keys(res.data).map((i) => {
                   if (i == userId) {
-                    console.log("ab kro is main change");
                     Object.keys(res.data[i]).map((j) => {
-                      console.log(j);
                       let updates = {};
                       updates[
                         "/Users/" + userId + "/" + j + "/coverPic"
@@ -333,7 +302,6 @@ export const changeCoverPic = (e) => {
                           dispatch(saveCoverPicSuccess(snapshot));
                         })
                         .catch((res) => {
-                          console.log("failed");
                         });
                     });
                   }
@@ -353,14 +321,11 @@ export const getSelectedUserDetail = (id, history) => {
     axios
       .get("https://socialapp-6449c.firebaseio.com/Users.json")
       .then((res) => {
-        console.log(res);
         Object.keys(res.data).map((i) => {
           if (i == id) {
-            console.log(i);
             Object.keys(res.data[i]).map((j) => {
               selectedUser = res.data[i][j];
               selectedUser.userId = i;
-              console.log(selectedUser);
             });
           }
         });
@@ -380,8 +345,6 @@ export const setFollower = () => {
     let stalkedUserId = store.getState().auth.signUpData.userId;
     let stalkedUserData = store.getState().auth.signUpData;
     let follow = stalkedUserData.friends.follow.push(logInUserId);
-
-    // stalkedUserData.friends.following.push(logInUserId);
     logedInUserFriends.push(stalkedUserId);
     console.log(stalkedUserData);
     axios
@@ -390,7 +353,6 @@ export const setFollower = () => {
         Object.keys(res.data).map((i) => {
           if (i == stalkedUserId) {
             Object.keys(res.data[i]).map((j) => {
-              console.log(res.data[i][j]);
               let updates = {};
               updates["/Users/" + i + "/" + j + "/friends/follow"] = follow;
               fire
@@ -407,36 +369,8 @@ export const setFollower = () => {
           }
         });
       });
-
-    // let updates = {};
-    // updates["/Users/" + userId + "/" + j + "/profilePic"] = snapshot;
-    // fire
-    //   .database()
-    //   .ref()
-    //   .update(updates)
-    //   .then((res) => {
-    //     dispatch(saveProfilePicSuccess(snapshot));
-
     dispatch(setFollowerSuccess(stalkedUserData));
 
-    // stalkedUserData.currentFollower = logInUserId;
-    // stalkedUserData.friends.following.push(stalkedUserData.currentFollower);
-    // stalkedUserData.friends.folllowing.find(i=>{
-
-    // })
-    // let updates = {};
-    // updates["/Users/" + logInUserId] = stalkedUserData;
-    // fire
-    //   .database()
-    //   .ref()
-    //   .update(updates)
-    //   .then((res) => {
-    //     console.log(res);
-    //     // dispatch(setFollowerSuccess(stalkedUserData));
-    //   })
-    //   .catch((res) => {
-    //     console.log(res);
-    //   });
   };
 };
 export const setFollowerSuccess = (stalkedUserData) => {

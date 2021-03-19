@@ -26,8 +26,6 @@ class ShareThoughts extends Component {
       name: name,
       comment: "",
     };
-    console.log(profilePic);
-    console.log(i);
     enterInfo.comment = e.target.value;
     i.currentComment = { ...enterInfo };
 
@@ -55,11 +53,6 @@ class ShareThoughts extends Component {
       changing: true,
     });
   };
-  // getProfile = (i) => {
-  //   console.log(this.props.history.location);
-  //   this.props.history.push("/profile");
-  //   console.log("lplp");
-  // };
 
   render() {
     console.log(this.state.posts);
@@ -186,12 +179,8 @@ class ShareThoughts extends Component {
                     trackLikes={() => this.props.likesTracker(i)}
                     likes={i.likes}
                     currentlike={i.currentlike}
-                    // getProfile={this.getProfile}
                     getSelectedUserDetail={this.props.getSelectedUserDetail}
                     history={this.props.history}
-
-                    // comment={i.currentComment}
-                    // currentComment={i.currentComment}
                   />
                 );
               })}
@@ -210,7 +199,6 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    // onInit: () => dispatch(actionCreators.loadPost()),
     textChangedHandler: (e) => dispatch(actionCreators.textChangedHandler(e)),
     imageUploadHandler: (e) => dispatch(actionCreators.imageUploadHandler(e)),
     videoUploadHandler: (e) => dispatch(actionCreators.videoUploadHandler(e)),
@@ -222,7 +210,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(ShareThoughts));
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(withRouter(ShareThoughts));

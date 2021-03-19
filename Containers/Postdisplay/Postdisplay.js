@@ -11,7 +11,6 @@ import { store } from "../..";
 const postDisplay = (props) => {
   let found = props.likes.find((post) => {
     if (post.userId == store.getState().auth.userId) {
-      console.log(post.userId);
       return true;
     }
   });
@@ -189,12 +188,11 @@ const postDisplay = (props) => {
                   .slice(1)
                   .reverse()
                   .map((i, index) => {
-                    console.log(i);
+                    
                     return (
                       <div
                         className="d-flex flex-row pt-2 "
                         key={index}
-                        // onClick={props.getProfile}
                         onClick={() =>
                           props.getSelectedUserDetail(i.userId, props.history)
                         }
